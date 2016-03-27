@@ -4,8 +4,6 @@ public abstract class RectShape extends Shape {
     protected Point firstPoint;
     protected Point secondPoint;
 
-    RectShape() {}
-
     RectShape(Point start, Point finish) {
         this.firstPoint = start;
         this.secondPoint = finish;

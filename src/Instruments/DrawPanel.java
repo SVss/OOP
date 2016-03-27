@@ -70,13 +70,13 @@ public class DrawPanel extends JPanel {
         System.out.println(String.format("Instruments.DrawTools.Shapes count: %d", shapesList.size()) );
         System.out.println("Instruments.DrawTools.Shapes list:");
 
-        g.drawString(currentShapeName, 10, 20);
+        g.drawString( (currentShapeName != "")?"Drawing: "+currentShapeName:"", 10, 20);
 
         int i = 0;
         for (Shape shape: shapesList) {
             shape.draw(g);
 
-            System.out.println(String.format("%d) %s", ++i, shape.getClass().getCanonicalName()));
+            System.out.println(String.format("%d) %s", ++i, shape.getClass().getSimpleName()));
         }
     }
 }

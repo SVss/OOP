@@ -1,8 +1,6 @@
 package Instruments;
 
-import Instruments.DrawTools.EllipseDrawTool;
-import Instruments.DrawTools.LineDrawTool;
-import Instruments.DrawTools.RectangleDrawTool;
+import Instruments.DrawTools.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -31,8 +29,9 @@ public class InstrumentsPanel extends JPanel {
         this.add(new JLabel("Instruments"));
 
         this.add(new LineDrawTool(d).getButton());          // Line
-        this.add(new RectangleDrawTool(d).getButton() );    // Rectanlge
+        this.add(new RectangleDrawTool(d).getButton() );    // Rectangle
         this.add(new EllipseDrawTool(d).getButton() );      // Ellipse
+        this.add(new CircleDrawTool(d).getButton() );       // Circle
 
         this.add(buttonUndo);
         this.add(buttonClear);

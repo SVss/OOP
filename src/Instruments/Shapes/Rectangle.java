@@ -4,13 +4,11 @@ import java.awt.*;
 
 public class Rectangle extends RectShape{
 
-    public Rectangle(Instruments.Shapes.Point start, Instruments.Shapes.Point finish) {
+    public Rectangle(Point start, Point finish) {
         super(start, finish);
     }
 
     public void draw(Graphics g) {
-        g.setColor(this.borderColor);
-
         int x1 = firstPoint.getX();
         int x2 = secondPoint.getX();
         int y1 = firstPoint.getY();
