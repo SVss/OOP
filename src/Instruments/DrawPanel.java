@@ -10,9 +10,20 @@ import java.util.ArrayList;
 public class DrawPanel extends JPanel {
     private ArrayList<Instruments.Shapes.Shape> shapesList = new ArrayList<>();
     private MouseAdapter lastListener = null;
+    private String currentShapeName = "";
 
     public DrawPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black) );
+    }
+
+    public void setCurrentShapeName(String name) {
+        this.currentShapeName = name;
+        repaint();
+    }
+
+    public void clearCurrentShapeName() {
+        this.currentShapeName = "";
+        repaint();
     }
 
     public void addShape(Shape shape) {
@@ -54,9 +65,12 @@ public class DrawPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+
         System.out.println("***");
         System.out.println(String.format("Instruments.DrawTools.Shapes count: %d", shapesList.size()) );
         System.out.println("Instruments.DrawTools.Shapes list:");
+
+        g.drawString(currentShapeName, 10, 20);
 
         int i = 0;
         for (Shape shape: shapesList) {

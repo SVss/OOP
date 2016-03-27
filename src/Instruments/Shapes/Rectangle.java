@@ -11,10 +11,10 @@ public class Rectangle extends RectShape{
     public void draw(Graphics g) {
         g.setColor(this.borderColor);
 
-        int x1 = leftTop.getX();
-        int x2 = rightBottom.getX();
-        int y1 = leftTop.getY();
-        int y2 = rightBottom.getY();
+        int x1 = firstPoint.getX();
+        int x2 = secondPoint.getX();
+        int y1 = firstPoint.getY();
+        int y2 = secondPoint.getY();
 
         if (getHeight() == 0 || getWidth() == 0) {
             g.drawLine(x1, y1, x2, y2 );

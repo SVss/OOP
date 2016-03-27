@@ -1,38 +1,38 @@
 package Instruments.Shapes;
 
 public abstract class RectShape extends Shape {
-    protected Point leftTop;
-    protected Point rightBottom;
+    protected Point firstPoint;
+    protected Point secondPoint;
 
     RectShape() {}
 
     RectShape(Point start, Point finish) {
-        this.leftTop = start;
-        this.rightBottom = finish;
+        this.firstPoint = start;
+        this.secondPoint = finish;
     }
 
-    public Point getLeftTop() {
-        return leftTop;
+    public Point getFirstPoint() {
+        return firstPoint;
     }
 
-    public void setLeftTop(Point point) {
-        leftTop = point;
+    public void setFirstPoint(Point point) {
+        firstPoint = point;
     }
 
-    public Point getRightBottom() {
-        return rightBottom;
+    public Point getSecondPoint() {
+        return secondPoint;
     }
 
-    public void setRightBottom(Point point) {
-        rightBottom = point;
+    public void setSecondPoint(Point point) {
+        secondPoint = point;
     }
 
     public int getHeight() {
-        return leftTop.getY() - rightBottom.getY();
+        return firstPoint.getY() - secondPoint.getY();
     }
 
     public int getWidth() {
-        return leftTop.getX() - rightBottom.getX();
+        return firstPoint.getX() - secondPoint.getX();
     }
 
 }

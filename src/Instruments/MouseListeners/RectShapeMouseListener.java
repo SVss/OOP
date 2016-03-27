@@ -25,17 +25,19 @@ public abstract class RectShapeMouseListener extends ShapeMouseListener {
                 drawer.removeLastShape();
             }
             isDrawing = false;
+            drawer.clearCurrentShapeName();
         }
     }
 
     public void mouseReleased(MouseEvent e) {
         drawer.setMouseListener(null);
         isDrawing = false;
+        drawer.clearCurrentShapeName();
     }
 
     public void mouseDragged(MouseEvent e) {
         if (isDrawing) {
-            rectShape.setRightBottom(new Point(e.getX(), e.getY()));
+            rectShape.setSecondPoint(new Point(e.getX(), e.getY()));
             drawer.replaceLastShape(rectShape);
         }
     }

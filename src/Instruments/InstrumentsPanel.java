@@ -1,5 +1,7 @@
 package Instruments;
 
+import Instruments.DrawTools.EllipseDrawTool;
+import Instruments.DrawTools.LineDrawTool;
 import Instruments.DrawTools.RectangleDrawTool;
 
 import javax.swing.*;
@@ -11,8 +13,6 @@ public class InstrumentsPanel extends JPanel {
     private JButton buttonClear = new JButton("Clear");
 
     public InstrumentsPanel(DrawPanel d) {
-
-        // add buttons here
 
         buttonUndo.addActionListener(new ActionListener() {
             @Override
@@ -30,7 +30,9 @@ public class InstrumentsPanel extends JPanel {
 
         this.add(new JLabel("Instruments"));
 
-        this.add(new RectangleDrawTool(d).getButton() );
+        this.add(new LineDrawTool(d).getButton());          // Line
+        this.add(new RectangleDrawTool(d).getButton() );    // Rectanlge
+        this.add(new EllipseDrawTool(d).getButton() );      // Ellipse
 
         this.add(buttonUndo);
         this.add(buttonClear);
