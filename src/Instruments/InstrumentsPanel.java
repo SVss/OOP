@@ -32,6 +32,7 @@ public class InstrumentsPanel extends JPanel {
         this.add(new RectangleDrawTool(d).getButton() );    // Rectangle
         this.add(new EllipseDrawTool(d).getButton() );      // Ellipse
         this.add(new CircleDrawTool(d).getButton() );       // Circle
+        this.add(new PolyLineDrawTool(d).getButton() );     // PolyLine
 
         this.add(buttonUndo);
         this.add(buttonClear);
