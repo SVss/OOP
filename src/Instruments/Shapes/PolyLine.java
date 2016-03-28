@@ -6,6 +6,9 @@ public class PolyLine extends PolyShape{
     public PolyLine() {
         super();
     }
+    public PolyLine(Point p) {
+        super(p);
+    }
 
     @Override
     public void draw(Graphics g) {

@@ -3,12 +3,21 @@ package Instruments.Shapes;
 import java.util.ArrayList;
 
 public abstract class PolyShape extends Shape {
-    protected ArrayList<Point> pointsList = new ArrayList<>();
+    protected ArrayList<Point> pointsList;
 
-    public PolyShape() { }
+    public PolyShape() {
+        this.pointsList = new ArrayList<>();
+    }
 
-    public void addPoint(Point p) {
+    public PolyShape(Point p) {
+        this.pointsList = new ArrayList<>();
         this.pointsList.add(p);
+    }
+
+
+    public Point addPoint(Point p) {
+        this.pointsList.add(p);
+        return p;
     }
 
     public void removeLastPoint() {
@@ -25,5 +34,9 @@ public abstract class PolyShape extends Shape {
 
     protected ArrayList<Point> getPointsList() {
         return this.pointsList;
+    }
+
+    public int pointsCount() {
+        return this.pointsList.size()-1;
     }
 }

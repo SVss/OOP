@@ -12,7 +12,7 @@ public class PolyLineMouseListener extends PolyShapeMouseListener {
     }
 
     @Override
-    protected PolyShape createPolyShape() {
-        return new PolyLine();
+    protected PolyShape createPolyShape(Point p) {
+        return new PolyLine(p);
     }
 }

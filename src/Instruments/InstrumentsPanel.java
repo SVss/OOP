@@ -1,6 +1,8 @@
 package Instruments;
 
 import Instruments.DrawTools.*;
+import Instruments.Shapes.Point;
+import Instruments.Shapes.PolyLine;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -33,7 +35,15 @@ public class InstrumentsPanel extends JPanel {
         this.add(new EllipseDrawTool(d).getButton() );      // Ellipse
         this.add(new CircleDrawTool(d).getButton() );       // Circle
         this.add(new PolyLineDrawTool(d).getButton() );     // PolyLine
+/*
+        PolyLine pl = new PolyLine();
+        pl.addPoint(new Point(10, 10) );
+        pl.addPoint(new Point(20, 10) );
+        pl.addPoint(new Point(20, 30) );
+        pl.addPoint(new Point(40, 30) );
 
+        d.addShape(pl);
+*/
         this.add(buttonUndo);
         this.add(buttonClear);
     }
