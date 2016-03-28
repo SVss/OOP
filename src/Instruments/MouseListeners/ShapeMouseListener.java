@@ -10,6 +10,6 @@ public abstract class ShapeMouseListener extends MouseAdapter{
     protected DrawPanel drawer;
 
     public abstract void mousePressed(MouseEvent e);
-    public abstract void mouseReleased(MouseEvent e);
+    public abstract void mouseMoved(MouseEvent e);
     public abstract void mouseDragged(MouseEvent e);
 }

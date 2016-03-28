@@ -15,31 +15,32 @@ public abstract class RectShapeMouseListener extends ShapeMouseListener {
 
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
-            isDrawing = true;
+            if (!isDrawing) {
+                isDrawing = true;
 
-            rectShape = createRectShape(new Point(e.getX(), e.getY()), new Point(e.getX(), e.getY()));
-            drawer.addShape(rectShape);
+                rectShape = createRectShape(new Point(e.getX(), e.getY()), new Point(e.getX(), e.getY()));
+                drawer.addShape(rectShape);
+            } else {
+                isDrawing = false;
+            }
 
         } else if(e.getButton() == MouseEvent.BUTTON3) {
             if (isDrawing) {
                 drawer.removeLastShape();
             }
             isDrawing = false;
-            drawer.clearCurrentShapeName();
         }
     }
 
-    public void mouseReleased(MouseEvent e) {
-        drawer.setMouseListener(null);
-        isDrawing = false;
-        drawer.clearCurrentShapeName();
-    }
-
-    public void mouseDragged(MouseEvent e) {
+    public void mouseMoved(MouseEvent e) {
         if (isDrawing) {
             rectShape.setSecondPoint(new Point(e.getX(), e.getY()));
             drawer.replaceLastShape(rectShape);
         }
+    }
+
+    public void mouseDragged(MouseEvent e) {
+        mouseMoved(e);
     }
 
     protected abstract RectShape createRectShape(Point p1, Point p2);
