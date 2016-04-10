@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PolyLineDrawTool extends ShapeDrawTool {
-    public PolyLineDrawTool(DrawPanel drawer) {
+    public PolyLineDrawTool(final DrawPanel drawer) {
         super(drawer, "Polyline");
 
         this.button.addActionListener(new ActionListener() {

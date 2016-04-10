@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EllipseDrawTool extends ShapeDrawTool {
-    public EllipseDrawTool(DrawPanel drawer) {
+    public EllipseDrawTool(final DrawPanel drawer) {
         super(drawer, "Ellipse");
 
         this.button.addActionListener(new ActionListener() {

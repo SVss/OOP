@@ -1,19 +1,21 @@
 package Instruments;
 
-import Instruments.DrawTools.*;
-import Instruments.Shapes.Point;
-import Instruments.Shapes.PolyLine;
+import Instruments.DrawTools.ShapeDrawTool;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import pro.ddopson.ClassEnumerator;
+import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+
 public class InstrumentsPanel extends JPanel {
-    private JButton buttonUndo = new JButton("Undo");
-    private JButton buttonClear = new JButton("Clear");
 
-    public InstrumentsPanel(DrawPanel d) {
+    public InstrumentsPanel(final DrawPanel d) {
 
+        JButton buttonUndo = new JButton("Undo");
         buttonUndo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -21,6 +23,7 @@ public class InstrumentsPanel extends JPanel {
             }
         });
 
+        JButton buttonClear = new JButton("Clear");
         buttonClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,20 +33,28 @@ public class InstrumentsPanel extends JPanel {
 
         this.add(new JLabel("Instruments"));
 
-        this.add(new LineDrawTool(d).getButton());          // Line
-        this.add(new RectangleDrawTool(d).getButton() );    // Rectangle
-        this.add(new EllipseDrawTool(d).getButton() );      // Ellipse
-        this.add(new CircleDrawTool(d).getButton() );       // Circle
-        this.add(new PolyLineDrawTool(d).getButton() );     // PolyLine
-/*
-        PolyLine pl = new PolyLine();
-        pl.addPoint(new Point(10, 10) );
-        pl.addPoint(new Point(20, 10) );
-        pl.addPoint(new Point(20, 30) );
-        pl.addPoint(new Point(40, 30) );
+        // get DrawTools list from package
+        List<Class<?>> drawToolClassesList =
+                ClassEnumerator.getClassesForPackage(ShapeDrawTool.class.getPackage() );
 
-        d.addShape(pl);
-*/
+        // add drawing buttons to DrawPanel
+        try {
+            for (Class<?> DrawToolClass: drawToolClassesList) {
+
+                // skip inner classes (f/ex, anonymous ActionListeners)
+                if ((DrawToolClass.getName().contains("$") ) ) continue;
+
+                // skip abstract classes (f/ex ShapeDrawTool)
+                if (Modifier.isAbstract(DrawToolClass.getModifiers() ) ) continue;
+
+                this.add( ( (ShapeDrawTool)DrawToolClass.getConstructor(DrawPanel.class).newInstance(d)).getButton() );
+            }
+        }
+        catch (IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+
         this.add(buttonUndo);
         this.add(buttonClear);
     }

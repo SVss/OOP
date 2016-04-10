@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CircleDrawTool extends ShapeDrawTool {
-    public CircleDrawTool(DrawPanel drawer) {
+    public CircleDrawTool(final DrawPanel drawer) {
         super(drawer, "Circle");
 
         this.button.addActionListener(new ActionListener() {
