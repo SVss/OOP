@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Rectangle extends RectShape{
+public class Rectangle extends RectShape  implements Serializable {
 
     public Rectangle(Point start, Point finish) {
         super(start, finish);

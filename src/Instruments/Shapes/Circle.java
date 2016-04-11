@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Circle extends Rectangle{
+public class Circle extends Rectangle implements Serializable{
 
     public Circle(Point start, Point finish) {
         super(start, finish);

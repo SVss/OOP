@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class PolyLine extends PolyShape{
+public class PolyLine extends PolyShape  implements Serializable {
     public PolyLine() {
         super();
     }

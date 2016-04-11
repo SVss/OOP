@@ -31,6 +31,26 @@ public class InstrumentsPanel extends JPanel {
             }
         });
 
+        JButton buttonSave = new JButton("Save");
+        buttonSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Saving list");
+                ShapesListSerializer.saveShapesList(d.getShapesList(), "save.sv");
+            }
+        });
+
+        JButton buttonLoad = new JButton("Load");
+        buttonLoad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Loading list");
+                d.setShapesList(ShapesListSerializer.loadShapesList("save.sv") );
+                d.repaint();
+            }
+        });
+
+
         this.add(new JLabel("Instruments"));
 
         // get DrawTools list from package
@@ -54,8 +74,14 @@ public class InstrumentsPanel extends JPanel {
             e.printStackTrace();
         }
 
+        this.add(new JSeparator(SwingConstants.VERTICAL) );
 
         this.add(buttonUndo);
         this.add(buttonClear);
+
+        this.add(new JSeparator(SwingConstants.VERTICAL) );
+
+        this.add(buttonSave);
+        this.add(buttonLoad);
     }
 }

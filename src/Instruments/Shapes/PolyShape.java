@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class PolyShape extends Shape {
+public abstract class PolyShape extends Shape implements Serializable {
     protected ArrayList<Point> pointsList;
 
     public PolyShape() {

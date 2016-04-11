@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Polygon extends PolyShape{
+public class Polygon extends PolyShape  implements Serializable {
     public Polygon() {
         super();
     }

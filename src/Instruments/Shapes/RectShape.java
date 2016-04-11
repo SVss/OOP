@@ -1,6 +1,8 @@
 package Instruments.Shapes;
 
-public abstract class RectShape extends Shape {
+import java.io.Serializable;
+
+public abstract class RectShape extends Shape implements Serializable {
     protected Point firstPoint;
     protected Point secondPoint;
 

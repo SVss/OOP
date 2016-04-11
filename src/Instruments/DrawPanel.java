@@ -8,7 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 public class DrawPanel extends JPanel {
-    private ArrayList<Instruments.Shapes.Shape> shapesList = new ArrayList<>();
+    private ArrayList<Shape> shapesList = new ArrayList<>();
     private MouseAdapter lastListener = null;
     private String currentShapeName = "";
 
@@ -48,6 +48,14 @@ public class DrawPanel extends JPanel {
         repaint();
     }
 
+    public ArrayList<Shape> getShapesList() {
+        return this.shapesList;
+    }
+
+    public void setShapesList(ArrayList<Shape> shapesList) {
+        this.shapesList = shapesList;
+    }
+
     public void setMouseListener(MouseAdapter mouseAdapter) {
         this.removeMouseListener(lastListener);
         this.removeMouseMotionListener(lastListener);
@@ -65,18 +73,18 @@ public class DrawPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
+/*
         System.out.println("***");
         System.out.println(String.format("Instruments.DrawTools.Shapes count: %d", shapesList.size()) );
         System.out.println("Instruments.DrawTools.Shapes list:");
-
+*/
         g.drawString( (currentShapeName != "")?"Drawing: "+currentShapeName:"", 10, 20);
 
         int i = 0;
         for (Shape shape: shapesList) {
             shape.draw(g);
 
-            System.out.println(String.format("%d) %s", ++i, shape.getClass().getSimpleName()));
+//            System.out.println(String.format("%d) %s", ++i, shape.getClass().getSimpleName()));
         }
     }
 }

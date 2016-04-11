@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-class CoordsArray {
+class CoordsArray implements Serializable{
     private int[] xs, ys;
     private int size = 0;
 

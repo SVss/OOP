@@ -1,8 +1,9 @@
 package Instruments.Shapes;
 
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public class Ellipse extends RectShape {
+public class Ellipse extends RectShape  implements Serializable {
 
     public Ellipse(Point p1, Point p2) {
         super(p1, p2);
