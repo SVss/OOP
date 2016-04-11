@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import pro.ddopson.ClassEnumerator;
+
+import java.io.File;
 import java.util.List;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -36,7 +38,11 @@ public class InstrumentsPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Saving list");
-                ShapesListSerializer.saveShapesList(d.getShapesList(), "save.sv");
+
+                JFileChooser saveFile = new JFileChooser();
+                if (saveFile.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    ShapesListSerializer.saveShapesList(d.getShapesList(), saveFile.getSelectedFile().getName() );
+                }
             }
         });
 
@@ -45,8 +51,12 @@ public class InstrumentsPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Loading list");
-                d.setShapesList(ShapesListSerializer.loadShapesList("save.sv") );
-                d.repaint();
+
+                JFileChooser loadFile = new JFileChooser();
+                if (loadFile.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    d.setShapesList(ShapesListSerializer.loadShapesList(loadFile.getSelectedFile().getName() ) );
+                    d.repaint();
+                }
             }
         });
 
